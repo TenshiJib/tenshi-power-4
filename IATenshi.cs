@@ -22,8 +22,10 @@ public class IATenshi : MonoBehaviour
     int j = 99;                 // indique si le joueur peut jouer, non '0' ou oui '1'
     int k = 99;                 // indique si le joueur 1 est une IA '1' ou humain '0'
     int f = 99;                 // indique si le joueur 2 est une IA '1' ou humain '0'
+    int tour = 0;               // indique le tour en cours
+
     int checktime = 0;          // marqueur de boucle IA
-    public int iachoix = 99;     // marqueur indiquant le choix de l'IA
+    public int iachoix = 99;    // marqueur indiquant le choix de l'IA
 
     // Tableau du plateau
     int[] Plateau = new int[42] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -57,8 +59,9 @@ public class IATenshi : MonoBehaviour
     {
         i = game.ijoueur;           // quel joueur peut jouer ?     | 1 = joueur 1, 2 = joueur 2
         j = game.vjoueur;           // le joueur peut-il jouer ?    | 0 = non, 1 = oui
-        k = game.selectp1;          // suis-je l'IA joueur 1 ?      | 0 = non, 1 = oui
-        f = game.selectp2;          // suis-je l'IA joueur 2 ?      | 0 = non, 1 = oui
+        k = game.selectp1;          // suis-je l'IA joueur 1 ?      | 0 = non, 1 = oui (IATenshi), 2 = oui (IACerpo), 3 = oui (IATingMei)
+        f = game.selectp2;          // suis-je l'IA joueur 2 ?      | 0 = non, 1 = oui (IATenshi), 2 = oui (IACerpo), 3 = oui (IATingMei)
+        tour = game.pnbtour;        // quel tour de jeu est-ce ? 
 
         Debug.Log("IA valeur de i = " + i + " IA valeur de j = " + j);
         Debug.Log("IA joueur 1 est " + k + " IA joueur 2 est " + f);
@@ -77,7 +80,7 @@ public class IATenshi : MonoBehaviour
             EtatPlateau();
         }
 
-        // Attente de x secondes avant prochaine vérification des valeurs
+        // Attente de x secondes avant prochaine vÃ©rification des valeurs
         StartCoroutine(TestWaitingSeconds());
 
     }
@@ -101,7 +104,7 @@ public class IATenshi : MonoBehaviour
 
     void EtatPlateau()
     {
-        // Ce script récupère les informations de l'état du plateau au moment où l'IA est autorisée à jouer
+        // Ce script rÃ©cupÃ¨re les informations de l'Ã©tat du plateau au moment oÃ¹ l'IA est autorisÃ©e Ã  jouer
         //
 
         int x = 0;
@@ -124,19 +127,19 @@ public class IATenshi : MonoBehaviour
 
 
     /// <summary>
-    ///  Veillez à ne rien modifier au dessus de IAScript
+    ///  Veillez Ã  ne rien modifier au dessus de IAScript
     /// </summary>
     void IAScript()
     {
         /// Vous devez enregistrer le choix de votre ia dans cette variable.
-        /// iachoix = [votre numéro de colonne de 1 à 7];
+        /// iachoix = [votre numÃ©ro de colonne de 1 Ã  7];
         /// exemple iachoix = 1;
         ///
-        /// Merci de veiller à ce que le choix soit possible
+        /// Merci de veiller Ã  ce que le choix soit possible
         /// 6 jetons max par colonne
-        /// 4 jetons alignés en vertical, horizontal ou diagonal pour gagner la partie
+        /// 4 jetons alignÃ©s en vertical, horizontal ou diagonal pour gagner la partie
         ///
-        /// Vous pouvez vérifier et connaitre la valeur de chaque case du plateau dans le tableau Plateau
+        /// Vous pouvez vÃ©rifier et connaitre la valeur de chaque case du plateau dans le tableau Plateau
         /// La position de la case est disponible dans EtatPlateau
         /// exemple : Plateau[8] est la case de la colonne 2, ligne 3
         /// case vide = 0, jeton jaune = 1, jeton rouge = 2
@@ -144,7 +147,7 @@ public class IATenshi : MonoBehaviour
 
         // Script de l'IA de Tenshi
         // Version 1
-        Debug.Log("Début du script IA de Tenshi.");
+        Debug.Log("DÃ©but du script IA de Tenshi.");
 
         
         

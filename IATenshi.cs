@@ -20,8 +20,8 @@ public class IATenshi : MonoBehaviour
     // Variables
     int i = 99;                 // indique quelle joueur doit jouer, joueur 1 '1' ou joueur 2 '2'
     int j = 99;                 // indique si le joueur peut jouer, non '0' ou oui '1'
-    int k = 99;                 // indique si le joueur 1 est une IA '1' ou humain '0'
-    int f = 99;                 // indique si le joueur 2 est une IA '1' ou humain '0'
+    int k = 99;                 // suis-je l'IA joueur 1 ?      | 0 = non, 1 = oui (IATenshi), 2 = oui (IACerpo), 3 = oui (IATingMei)
+    int f = 99;                 // suis-je l'IA joueur 2 ?      | 0 = non, 1 = oui (IATenshi), 2 = oui (IACerpo), 3 = oui (IATingMei)
     int tour = 0;               // indique le tour en cours
 
     int checktime = 0;          // marqueur de boucle IA
@@ -43,10 +43,12 @@ public class IATenshi : MonoBehaviour
     {
         if (checktime == 0)
         {
+            iachoix = 0;
             TestIA();
         }
         else if (checktime == 1)
         {
+            iachoix = 0;
             // Debug.Log("IA en attente ... ");
         }
         else if (checktime != 0 && checktime != 1)
